@@ -1,0 +1,138 @@
+.header {
+  color: #fff;
+  font-weight: 600;
+  background: #000;
+  width: 100%;
+  text-align: center;
+  padding: 15px 0 25px;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  .header__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    .header__nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      @media (max-width: 567px) {
+        max-width: 238px;
+      }
+      .nav__logo {
+        padding-left: 6px;
+        .nav__logo-link {
+          .nav__logo-img {
+          }
+        }
+      }
+      .nav__menu {
+        .nav__menu-lst {
+          display: flex;
+          justify-content: start;
+          .nav__menu-item {
+            .nav__menu-link {
+              display: block;
+              font-size: 14px;
+              letter-spacing: -0.9px;
+              padding: 6px;
+              &:hover {
+                text-decoration-line: underline;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .header__wrap-btn {
+      display: flex;
+      @media (max-width: 567px) {
+        max-width: 190px;
+      }
+      .header__btn-check-text {
+        font-size: 14px;
+        width: 175px;
+        font-weight: 700;
+        height: 35px;
+        line-height: 35px;
+        letter-spacing: -0.9px;
+      }
+    }
+    @media (min-width: 450px) {
+      justify-content: space-between;
+      .header__nav {
+        align-items: start;
+      }
+    }
+  }
+}
+
+@media (min-width: 568px) {
+  .header {
+    .header__container {
+      .header__nav {
+        // width: 50%;
+        align-items: flex-start;
+
+        .nav__menu {
+          .nav__menu-lst {
+            display: flex;
+
+            .nav__menu-item {
+              .nav__menu-link {
+                font-size: 15px;
+                letter-spacing: -1.2px;
+              }
+            }
+          }
+        }
+      }
+
+      .header__wrap-btn {
+        .header__btn-check-text {
+          font-size: 16px;
+          height: 40px;
+          line-height: 40px;
+          width: 200px;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .header {
+    .header__container {
+      .header__nav {
+        flex-direction: row;
+        .nav__logo {
+          padding: 0 16px;
+        }
+        .nav__menu {
+          .nav__menu-lst {
+            .nav__menu-item {
+              .nav__menu-link {
+                letter-spacing: -1px;
+              }
+            }
+          }
+        }
+      }
+
+      .header__wrap-btn {
+        display: flex;
+        justify-content: flex-end;
+        .header__btn-check-text {
+          font-size: 16px;
+          height: 40px;
+          line-height: 40px;
+          width: 200px;
+        }
+      }
+    }
+  }
+}

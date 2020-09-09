@@ -1,0 +1,17 @@
+.btn {
+  display: block;
+  color: #fff;
+  background: #1b5dab;
+  border-radius: 12px;
+  transition: box-shadow 0.3s;
+  cursor: auto;
+  
+  &:not(:disabled){
+    background: #4a90e2;
+    cursor: pointer;
+    &:hover {
+      box-shadow: 0 2px 6px 0 rgba(74, 144, 226, 0.5);
+      transition: box-shadow 0.3s;
+    }    
+  }
+}
