@@ -2,7 +2,7 @@ import { getDateDealine } from './dateDealine'
 
 export const inputResult = function(length, langu, ext) {
   if (length !== 0 && langu !== '') {
-    if (this.checkValidity()) document.getElementById('btnSubmit').removeAttribute('disabled')
+    if (document.getElementById('email').checkValidity()) document.getElementById('btnSubmit').removeAttribute('disabled')
     else document.getElementById('btnSubmit').setAttribute('disabled', 'disabled')
     document.getElementById('email').addEventListener("input", function (event) {
       if (this.checkValidity()) document.getElementById('btnSubmit').removeAttribute('disabled')
