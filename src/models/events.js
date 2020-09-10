@@ -1,5 +1,7 @@
 import {inputResult} from './inputResult.js'
 const path = require("path");
+const PizZip = require('pizzip');
+const Docxtemplater = require('docxtemplater');
 
 // const lg = (...items) => {
 //   console.log(...items);
@@ -29,22 +31,30 @@ inputFile.addEventListener('change', (event) => {
     textLengthSpan.style.display = 'none';
 
     let file = target.files[0];
+    extention = path.extname(file.name);
 
     let reader = new FileReader();
-    reader.readAsText(file);
-
-    reader.onload = function() {    
-      let result = reader.result.length;
+    
+    extention === '.docx' ? reader.readAsBinaryString(file) : reader.readAsText(file);
+      
+      
+    reader.onload = function() {
+      if (extention === '.docx') {
+        const zip = new PizZip(reader.result) 
+        const doc = new Docxtemplater(zip)
+        const outputText = doc.getFullText()
+        lengthText = outputText.length;
+        
+      } else lengthText = reader.result.length
+      
       labelCurrentFile.style.display = 'flex';
       inputFileLabel.style.display = 'none';
       [...labelCurrentFile.children].forEach((item, i) => {
-        item.innerText = i === 0 ? file.name : (i === 1) ? `Кількість символів: ${result}` : `завантажте файл`;
-      })
-      lengthText = result;
-      extention = path.extname(file.name);
+        item.innerText = i === 0 ? file.name : (i === 1) ? `Кількість символів: ${lengthText}` : `завантажте файл`;
+      })      
+      
       inputResult(lengthText, language, extention);
     };
-    
     
     
     labelCurrentFile.children[2].addEventListener('click', (e) => {

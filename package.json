@@ -42,11 +42,9 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.11.5",
-    "file-system": "^2.2.2",
+    "docxtemplater": "^3.19.3",
     "moment": "^2.27.0",
-    "moment-jdateformatparser": "^1.2.1",
-    "moment-timezone": "^0.5.31",
     "normalize.css": "^8.0.1",
-    "pdf-parse": "^1.1.1"
+    "pizzip": "^3.0.6"
   }
 }
