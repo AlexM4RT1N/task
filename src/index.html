@@ -60,6 +60,25 @@
                 файл</span></label>
             <textarea id="textarea" class="order-editing__input order-editing__textarea" name="enter-text"
               cols="30" rows="15" placeholder="Введіть текст або"></textarea>
+              <div id="select" class="order-editing__select">
+                <input class="select__title-input inactive" type="text" placeholder="Введіть кількість символів" pattern="^[ 0-9]+$"/>
+                <span id="select__ext-name"></span>
+                <span id="select__close-input"></span>
+                <h4 class="select__title inactive"></h4>
+            
+                <input class="select__input" id="extDoc" type="radio" value=".doc" name="selectExtention" />
+                <label class="select__input-label inactive" for="extDoc">.DOC</label>
+                <input class="select__input" id="extDocx" type="radio" value=".docx" name="selectExtention" />
+                <label class="select__input-label inactive" for="extDocx">.DOCX</label>
+                <input class="select__input" id="extRtf" type="radio" value=".rtf" name="selectExtention" />
+                <label class="select__input-label inactive" for="extRtf">.RTF</label>
+                <input class="select__input" id="extPdf" type="radio" value=".pdf" name="selectExtention" />
+                <label class="select__input-label inactive" for="extPdf">.PDF</label>
+                <input class="select__input" id="extOdt" type="radio" value=".odt" name="selectExtention" />
+                <label class="select__input-label inactive" for="extOdt">.ODT</label>
+                <input class="select__input" id="extTxt" type="radio" value=".txt" name="selectExtention" />
+                <label class="select__input-label inactive" for="extTxt">.TXT</label>
+              </div>
               <span id="text-length"></span>
           </div>
           <div class="order-editing__wrap-radio" id="wrap-radio">

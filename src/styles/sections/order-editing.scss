@@ -61,11 +61,17 @@
         &:hover {
           color: red;
         }
+        &.inactive {
+          pointer-events: none;
+        }
       }
       .order-editing__textarea {
         height: 250px;
         padding: 10px;
         margin-bottom: 0;
+        &.inactive {
+          pointer-events: none;
+        }
       }
       #text-length {
         display: block;
