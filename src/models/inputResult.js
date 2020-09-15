@@ -52,7 +52,7 @@ function getTime(length, langu, ext) {
   date += (ext === '.doc'|| ext === '.docx'|| ext === '.rtf'|| ext === '') ? 0 : date/5;
   if (date >= 1) {
     const hours = date - (date % Math.floor(date))
-    const minutes = Math.floor((60/100)*(date % Math.floor(date))*100)
+    const minutes = Math.round((60/100)*(date % Math.floor(date))*100)
     return [hours,minutes];
   } else {
     return [1,0];

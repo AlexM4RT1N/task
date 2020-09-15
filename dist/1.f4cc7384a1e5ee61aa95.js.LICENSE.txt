@@ -4,7 +4,3 @@
  * @author   Feross Aboukhadijeh <http://feross.org>
  * @license  MIT
  */
-
-//! moment.js
-
-//! moment.js locale configuration
