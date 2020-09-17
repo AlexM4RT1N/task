@@ -1,29 +1,23 @@
-const {getDateDeadline } = require('./dateDeadline')
-const { convertTime } = require('./dateDeadline')
-// import {getDateDeadline } from './dateDeadline'
+import {getDateDeadline } from './dateDeadline'
 // import { convertTime } from './dateDeadline'
 
-const inputResult = function(length, langu, ext) {
+export const inputResult = function(length, langu, ext) {
   
-    const [price, hours, minutes] = getPriceAndTime(length, langu, ext);
+    const [price, hours] = getPriceAndTime(length, langu, ext);
 
-    return [`${price} грн`, getDateDeadline(hours, minutes)]
+    return [`${price} грн`, getDateDeadline(hours)]
 }
 
 function getPriceAndTime(length, langu, ext = '1') {
   const [multiPrice, charsHour] = langu.split('-');
   
   const price = priceFormat(length * +multiPrice * +ext <= multiPrice*1000 ? multiPrice*1000 : length * +multiPrice * +ext);
-  // const priceFormat = new Intl.NumberFormat('ru-RU', {minimumFractionDigits:2, maximumFractionDigits:2}).format(price);
   
-  const date = (length / +charsHour + 0.5) * +ext;
-  const [hours, minutes] = date > 1 ? convertTime([date]) : [1,0];
+  const time = (length / +charsHour + 0.5) * +ext;
+  const hours = time > 1 ? time : 1;
   
-  return [price, hours, minutes]
+  return [price, hours]
 }
-
-module.exports = {inputResult, getPriceAndTime}
-
 
 function priceFormat(number) {
   let [grn, kop] = String(number).split('.')

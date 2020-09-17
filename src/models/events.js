@@ -1,9 +1,4 @@
-const {inputResult} = require('./inputResult')
-// import {inputResult} from './inputResult'
-
-// const lg = (...items) => {
-//   console.log(...items);
-// };
+import {inputResult} from './inputResult'
 
 const emailInput = document.getElementById('email');
 const btnSubmit = document.getElementById('btnSubmit');
@@ -58,7 +53,6 @@ const getResult = () => {
   resultPrice.innerText = resultP
   resultDate.innerText = resultD
 }
-
 
 const resetResult = () => {
   resultPrice.innerText = `0,00 грн`
