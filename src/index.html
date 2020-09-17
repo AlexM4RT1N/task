@@ -49,47 +49,28 @@
           </div>
 
           <input class="order-editing__input" type="text" name="name" placeholder="Ваше ім'я" />
-          <div class="wrap-enter-text">
-            <div class="label-current-file">
-              <div class="label-current-file__name"></div>
-              <div class="label-current-file__length"></div>
-              <div class="label-current-file__btn"></div>
-            </div>
-            <input id="input-file" class="order-editing__input-file" type="file" name="file" accept=".doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,.csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel,application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint, text/plain, application/pdf, .rtf, .txt, .pdf, .zip"/>
-            <label id="input-file-label" class="order-editing__input-file-label" for="input-file"><span>завантажте
-                файл</span></label>
+          <div class="wrap-enter-text">                       
             <textarea id="textarea" class="order-editing__input order-editing__textarea" name="enter-text"
               cols="30" rows="15" placeholder="Введіть текст або"></textarea>
-              <div id="select" class="order-editing__select">
-                <input class="select__title-input inactive" type="text" placeholder="Введіть кількість символів" pattern="^[ 0-9]+$"/>
-                <span id="select__ext-name"></span>
-                <span id="select__close-input"></span>
-                <h4 class="select__title inactive"></h4>
-            
-                <input class="select__input" id="extDoc" type="radio" value=".doc" name="selectExtention" />
-                <label class="select__input-label inactive" for="extDoc">.DOC</label>
-                <input class="select__input" id="extDocx" type="radio" value=".docx" name="selectExtention" />
-                <label class="select__input-label inactive" for="extDocx">.DOCX</label>
-                <input class="select__input" id="extRtf" type="radio" value=".rtf" name="selectExtention" />
-                <label class="select__input-label inactive" for="extRtf">.RTF</label>
-                <input class="select__input" id="extPdf" type="radio" value=".pdf" name="selectExtention" />
-                <label class="select__input-label inactive" for="extPdf">.PDF</label>
-                <input class="select__input" id="extOdt" type="radio" value=".odt" name="selectExtention" />
-                <label class="select__input-label inactive" for="extOdt">.ODT</label>
-                <input class="select__input" id="extTxt" type="radio" value=".txt" name="selectExtention" />
-                <label class="select__input-label inactive" for="extTxt">.TXT</label>
-              </div>
               <span id="text-length"></span>
+              <select name="extentions" id="select">
+                <option value="1">.DOC</option>
+                <option value="1">.DOCX</option>
+                <option value="1">.RTF</option>
+                <option value="1.2">.PDF</option>
+                <option value="1.2">.ODT</option>
+                <option value="1.2">.TXT</option>
+              </select>
           </div>
           <div class="order-editing__wrap-radio" id="wrap-radio">
             <h3 class="order-editing__title-radio">МОВА</h3>
 
-            <input class="order-editing__radio" type="radio" value="ukrainian" name="language" id="ukrainian"
+            <input class="order-editing__radio" type="radio" value="0.05-1333" name="language" id="ukrainian"
               required />
             <label class="order-editing__radio-label" for="ukrainian">Українська</label>
-            <input class="order-editing__radio" type="radio" value="russian" name="language" id="russian" />
+            <input class="order-editing__radio" type="radio" value="0.05-1333" name="language" id="russian" />
             <label class="order-editing__radio-label" for="russian">Російська</label>
-            <input class="order-editing__radio" type="radio" value="english" name="language" id="english"/>
+            <input class="order-editing__radio" type="radio" value="0.12-333" name="language" id="english"/>
             <label class="order-editing__radio-label" for="english">Англійська</label>
           </div>
           <input class="order-editing__input" type="text" name="comment"

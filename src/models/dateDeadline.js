@@ -3,12 +3,12 @@
 
 // const testDate = new Date(...dt)
 
-export function getDateDealine(hoursT, minutesT, newDate = new Date(), today = 1) {
+
+function getDateDeadline(hoursT, minutesT, newDate = new Date('2020-09-17 14:43'), today = 1) {
   let hours = hoursT;
   let minutes = minutesT;
-  const wD = {sat:6, sun:0}
+  const wD = {sat:6, sun:0, wd:[0, 1, 1, 1, 1, 1, 0]}
   const wH = {start: 10, end: 19}
-  
   const now = new Date(newDate)
   const nDay = now.getDay();
   const nDate = now.getDate();
@@ -18,7 +18,7 @@ export function getDateDealine(hoursT, minutesT, newDate = new Date(), today = 1
   let nextDay = 0;
   const deadline = new Date(now);
   
-  if(nDay !== wD.sat && nDay !== wD.sun) {  
+  if(wD.wd[nDay]) {  
     
     if(nHour >= wH.start && nHour < wH.end) {
       
@@ -35,47 +35,36 @@ export function getDateDealine(hoursT, minutesT, newDate = new Date(), today = 1
           if (today === 1 ) return (hours < 1 || (hours === 1 && minutes < 1)) ? `Здамо за: одну годину` :
           (hours < 2 || (hours === 2 && minutes < 1)) ? `Здамо за: дві години` :
           (hours < 3 || (hours === 3 && minutes < 1)) ? `Здамо за: три години`:
-          format(deadline);
-          
+          format(deadline);          
           
           if (today === 0) return format(deadline);
+
         } else {
-          if (minutes < 60 - nMin) {
-            minutes = 60 - (60 - nMin - minutes);
-            hours--;
-          } else {
-            minutes = minutes - (60 - nMin);
-          }
-          hours = hours - (wH.end - (nHour+1))
+          [hours, minutes] = convertTime([convertTime([hours, minutes]) - (wH.end - convertTime([nHour,nMin]))])
           
           deadline.setDate(nDate + 1)
           deadline.setHours(wH.start, 0)
-          return getDateDealine(hours, minutes, deadline, 0)
+          return getDateDeadline(hours, minutes, deadline, 0)
+
         }
       } else {
-        if (minutes < 60 - nMin) {
-          minutes = 60 - (60 - nMin - minutes);
-          hours--;
-        } else {
-          minutes = minutes - (60 - nMin);
-        }
-        hours = hours - (wH.end - (nHour+1))
+        [hours, minutes] = convertTime([convertTime([hours, minutes]) - (wH.end - convertTime([nHour,nMin]))])
         
         deadline.setDate(nDate + 1)
         deadline.setHours(wH.start, 0)
-        return getDateDealine(hours, minutes, deadline, 0)
+        return getDateDeadline(hours, minutes, deadline, 0)
       }
     } else {
       nextDay = (nHour >= 0 && nHour < wH.start) ? 0 : 1;
       deadline.setDate(nDate + nextDay)
       deadline.setHours(wH.start, 0)
-      return getDateDealine(hours, minutes, deadline, 0)
+      return getDateDeadline(hours, minutes, deadline, 0)
     }
   } else {
     nextDay = nDay === wD.sat ? 2 : nDay === wD.sun ? 1 : 0;
     deadline.setDate(nDate + nextDay)
     deadline.setHours(wH.start, 0)
-    return getDateDealine(hours, minutes, deadline, 0)
+    return getDateDeadline(hours, minutes, deadline, 0)
   }
 }
 
@@ -98,3 +87,12 @@ function format(date) {
 
   return `Термін виконання: ${D}.${M}.${Y} о ${h}:${m}`;
 }
+
+function convertTime(arr = []) {
+  return arr.length === 1 ? [
+                              Math.floor(arr[0]), 
+                              arr[0] >= 1 ? Math.round(arr[0] % Math.floor(arr[0])*60) : Math.round(arr[0]*60)
+                            ] : [arr[0] + (arr[1] / 60)];
+}
+
+module.exports = {getDateDeadline, convertTime}
